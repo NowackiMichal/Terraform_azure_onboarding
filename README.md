@@ -57,3 +57,41 @@ resource "azurerm_resource_group" "my_demo_rg1" {
   name = "my-demo-rg1"  
 }
 ```
+## Step-03: Terraform Configuration Language Syntax
+1. Blocks
+2. Arguments, Attributes & Meta-Arguments
+3. Identifiers
+```t
+# Template
+<BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>"   {
+  # Block body
+  <IDENTIFIER> = <EXPRESSION> # Argument
+}
+
+# Azure Example
+# Create a resource group
+resource "azurerm_resource_group" "myrg" { # Resource BLOCK
+  name = "myrg-1" # Argument
+  location = "East US" # Argument 
+}
+# Create Virtual Network
+resource "azurerm_virtual_network" "myvnet" { # Resource BLOCK
+  name                = "myvnet-1" # Argument
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.myrg.location # Argument with value as expression
+  resource_group_name = azurerm_resource_group.myrg.name # Argument with value as expression
+}
+```
+- Arguments can be `required` or `optional`
+- Attribues format looks like `resource_type.resource_name.attribute_name`
+- Meta-Arguments change a resource type's behavior (Example: count, for_each)
+
+Terraform Top-Level blocks:
+1. Terraform Settings Block
+2. Provider Block
+3. Resource Block
+4. Input Variables Block
+5. Output Values Block
+6. Local Values Block
+7. Data Sources Block
+8. Modules Block

@@ -83,7 +83,7 @@ resource "azurerm_virtual_network" "myvnet" { # Resource BLOCK
 }
 ```
 - Arguments can be `required` or `optional`
-- Attribues format looks like `resource_type.resource_name.attribute_name`
+- Attribues (output parameters - values we can reference after resource is created) format looks like `resource_type.resource_name.attribute_name`
 - Meta-Arguments change a resource type's behavior (Example: count, for_each)
 
 Terraform Top-Level blocks:
